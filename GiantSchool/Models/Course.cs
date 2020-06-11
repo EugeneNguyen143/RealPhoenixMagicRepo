@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using static System.Collections.Specialized.BitVector32;
 
 namespace GiantSchool.Models
 {
@@ -19,6 +20,7 @@ namespace GiantSchool.Models
         public DateTime DateTime { get; set; }
         public Category Category { get; set; }
         [Required]
+        public byte CategoryID { get; set; }
         public string Name { get; set; }
     }
 }

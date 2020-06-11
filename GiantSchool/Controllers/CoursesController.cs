@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GiantSchool.Models;
+using GiantSchool.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace GiantSchool.Controllers
 {
@@ -15,14 +18,34 @@ namespace GiantSchool.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
-        public ActionResult Create()
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CourseViewModel viewModel)
         {
-            var viewModel = new CourseViewModel
+            if (!ModelState.IsValid)
             {
-                Categories = _dbContext.Categories.ToList(),
-                Heading = "Add Course"
+                viewModel.Categories = _dbContext.Categories.ToList();
+                return View("Create", viewModel);
+            }
+            var course = new Course
+            {
+                LecturerID = User.Identity.GetUserId(),
+                DateTime = viewModel.GetDateTime(),
+                CategoryID = viewModel.Category,
+                Place = viewModel.Place
             };
-            return View(viewModel);
+            _dbContext.Courses.Add(course);
+            try
+            {
+                _dbContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                String n = e.InnerException.ToString();
+            }
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
