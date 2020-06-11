@@ -21,6 +21,15 @@ namespace GiantSchool.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult Create()
+        {
+            var viewModel = new CourseViewModel
+            {
+                Categories = _dbContext.Categories.ToList()
+
+            };
+            return View(viewModel);
+        }
         public ActionResult Create(CourseViewModel viewModel)
         {
             if (!ModelState.IsValid)

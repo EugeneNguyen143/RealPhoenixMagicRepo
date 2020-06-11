@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GiantSchool.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,12 @@ namespace GiantSchool.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _dbContext;
+
+        public HomeController()
+        {
+            _dbContext = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
             return View();
