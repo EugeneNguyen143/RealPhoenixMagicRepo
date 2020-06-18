@@ -24,26 +24,14 @@
                         @course.Lecturer.Name
                         @if (Model.ShowAction)
                         {
-                            <button data-user-id="@course.LecturerId" class="btn btn-default btn-sm js-toggle-follow">Follow</button>
+                            <button data-user-id="@course.LecturerID" class="btn btn-default btn-sm js-toggle-follow">Follow</button>
                         }
                     </div>
                     <div class="category">
                         @course.Category.Name
                         @if (Model.ShowAction)
                         {
-                            var UserID = @User.Identity.GetUserId();
-                            ApplicationDbContext _dbContext = new ApplicationDbContext();
-                            bool isGoing = _dbContext.Attendances.Any(a => a.CourseId == course.ID && a.AttendeeId == UserID);
-                            <div>
-                                @if (isGoing)
-                                {
-                                    <span>Course joined</span>
-                                }
-                                else
-                                {
-                                    <button data-course-id="@course.ID" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-                                }
-                            </div>
+                            <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
                         }
                     </div>
                 </div>
