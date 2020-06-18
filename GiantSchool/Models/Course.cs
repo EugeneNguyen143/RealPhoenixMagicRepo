@@ -11,6 +11,7 @@ namespace GiantSchool.Models
     {
         public int Id { get; set; }
 
+        public bool IsCancelled { get; set; }
         public ApplicationUser Lecturer { get; set; }
         [Required]
         public string LecturerID { get; set; }
