@@ -24,14 +24,37 @@ textarea {
 }
 
 .navbar-inverse {
-    background-color: #42ADF5;
-    border-color: #2573ff;
+    background-color: #d41d50;
+    border-color: #fbf6f6;
 }
 
-.navbar-inverse .navber-nav > li > a {
-    color: #ffffff;
+    .navbar-inverse .navbar-nav > li > a {
+        color: #fff;
+    }
+
+    .navbar-inverse .navbar-brand {
+        color: #fff;
+    }
+
+.course {
+    list-style: none;
 }
 
-.navbar-inverse .navbar-brand {
-    color: #4cff00;
-}
+    .course > li {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+        .course > li > .date {
+            text-align: center;
+            background-color: #d41d50;
+            color: #fff;
+            width: 60px;
+            border-radius: 8px;
+        }
+
+        .course > li .details {
+            position: absolute;
+            top: 0;
+            left: 70px;
+        }
