@@ -32,7 +32,7 @@
                         {
                             var UserID = @User.Identity.GetUserId();
                             ApplicationDbContext _dbContext = new ApplicationDbContext();
-                            bool isGoing = _dbContext.Attendances.Any(a => a.CourseId == course.Id && a.AttendeeId == UserID);
+                            bool isGoing = _dbContext.Attendances.Any(a => a.CourseId == course.ID && a.AttendeeId == UserID);
                             <div>
                                 @if (isGoing)
                                 {

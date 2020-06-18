@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using GiantSchool.Models;
 using GiantSchool.DTOs;
+using Microsoft.AspNet.Identity;
 
 namespace GiantSchool.Controllers
 {
